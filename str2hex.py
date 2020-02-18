@@ -14,12 +14,10 @@ def hexint(number):
         if num in buffer:
             bin_form = bin_form + buffer[num]
     count, i = 0, 0
-    print(f'Binary form {bin_form}')
+    # print(f'Binary form {bin_form}')
     for x in range(len(bin_form) - 1, -1, -1):
         if bin_form[x] == "1":
             count = count + 2 ** i
         i += 1
     return count
 
-
-print(chr(hexint(input())))

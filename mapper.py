@@ -1,4 +1,5 @@
 import json
+from splitnencode import encoder
 
 mapper_matrix = [['C', 'D', 'E', 'F'],
                  ['8', '9', 'A', 'B'],
@@ -14,7 +15,8 @@ def mapping(password, patterns):
         secret = ""
         for map in mappings:
             secret += mapper_matrix[map[0]][map[1]]
-        encoded.append((letter, secret))
+        encoded.append(secret)
+        # encoded.append((letter, secret))
     return encoded
 
 
@@ -24,4 +26,6 @@ d = open("dataset.json", "r")
 data = json.load(d)
 patterns = data
 mapped = mapping(passwd, patterns)
-print(mapped)
+print(encoder(mapped))
+del d,data,patterns,mapped
+
