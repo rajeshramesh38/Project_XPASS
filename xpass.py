@@ -2,6 +2,7 @@ import json
 import sys
 
 import mapper
+import post_processor
 import randomizer
 import splitnencode
 
@@ -20,6 +21,7 @@ def pattern_printer(lt):
     print("---------")
 
 
+rd_matrix = randomizer.random_matrix()
 if len(cmd_arguments) > 0:
     if cmd_arguments[0] == "help":
         print("""
@@ -31,20 +33,20 @@ Options:
 """)
     if cmd_arguments[0] == "show_pattern":
         if cmd_arguments[1] == "random_pattern":
-            pattern_printer(randomizer.random_matrix())
+            pattern_printer(rd_matrix)
         else:
             pattern_printer(patterns[cmd_arguments[1]])
     if cmd_arguments[0] == "generate_password":
         pattern_to_choose = list()
         if cmd_arguments[1] == "random_pattern":
-            pattern_to_choose = randomizer.random_matrix()
+            pattern_to_choose = rd_matrix
         else:
             pattern_to_choose = patterns[cmd_arguments[1]]
         password = cmd_arguments[2]
         encoded_form = mapper.mapping(password, pattern_to_choose)
         gen = splitnencode.encoder(encoded_form)
-        print(gen)
-        # post_processed = post_processor.postprocess(gen)
-        # print("Generated Password: ", post_processed)
+        print("Not Processed: ", gen, len(gen))
+        post_processed = post_processor.postprocess(gen)
+        print("Generated Password: ", post_processed, len(post_processed))
 else:
-    print("Invalid commandline usage")
+    print("Invalid commandline usage please type 'xpass.py help' ")

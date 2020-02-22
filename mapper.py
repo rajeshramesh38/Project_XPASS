@@ -4,6 +4,7 @@ d = open("dataset.json", "r")
 data = json.load(d)
 patterns = data
 
+
 def mapping(password, mapper_matrix, patterns=patterns):
     temp = password.upper()
     encoded = []
@@ -14,5 +15,6 @@ def mapping(password, mapper_matrix, patterns=patterns):
             secret += mapper_matrix[map[0]][map[1]]
         encoded.append(secret)
     return encoded
+
 
 del d, data, patterns
