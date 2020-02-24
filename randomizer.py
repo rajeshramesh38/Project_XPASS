@@ -12,13 +12,12 @@ def randomizer(string):
     return rand_text
 
 
-def random_matrix():
+def random_matrix(value):
     matrix = list()
     temp = []
-    for x in randomizer(hexDigits):
+    for x in randomizer(value):
         temp.append(x)
         if len(temp) == 4:
             matrix.append(temp)
             temp = []
     return matrix
-

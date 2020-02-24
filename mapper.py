@@ -16,5 +16,4 @@ def mapping(password, mapper_matrix, patterns=patterns):
         encoded.append(secret)
     return encoded
 
-
 del d, data, patterns

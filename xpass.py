@@ -43,7 +43,9 @@ Options:
         else:
             pattern_to_choose = patterns[cmd_arguments[1]]
         password = cmd_arguments[2]
+        print(password)
         encoded_form = mapper.mapping(password, pattern_to_choose)
+        print(encoded_form)
         gen = splitnencode.encoder(encoded_form)
         print("Not Processed: ", gen, len(gen))
         post_processed = post_processor.postprocess(gen)
